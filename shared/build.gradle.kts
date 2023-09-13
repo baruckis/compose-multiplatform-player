@@ -12,7 +12,7 @@ kotlin {
     listOf(
         iosX64(),
         iosArm64(),
-        iosSimulatorArm64()
+        iosSimulatorArm64(),
     ).forEach { iosTarget ->
         iosTarget.binaries.framework {
             baseName = "shared"
@@ -34,7 +34,11 @@ kotlin {
             dependencies {
                 api("androidx.activity:activity-compose:1.7.2")
                 api("androidx.appcompat:appcompat:1.6.1")
-                api("androidx.core:core-ktx:1.10.1")
+                api("androidx.core:core-ktx:1.12.0")
+
+                implementation("androidx.media3:media3-exoplayer:1.1.1")
+                implementation("androidx.media3:media3-exoplayer-dash:1.1.1")
+                implementation("androidx.media3:media3-ui:1.1.1")
             }
         }
         val iosX64Main by getting
@@ -49,6 +53,7 @@ kotlin {
         val desktopMain by getting {
             dependencies {
                 implementation(compose.desktop.common)
+                implementation("uk.co.caprica:vlcj:4.8.2")
             }
         }
     }
